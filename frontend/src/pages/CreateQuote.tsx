@@ -45,9 +45,42 @@ const CreateCotizacion = () => {
     fetchLocalContext();
   }, [formData.local_codigo]);
 
+  const validateForm = (): boolean => {
+
+    if (localInfo && localInfo.status !== 'disponible') {
+      setError(`El local ${localInfo.codigo} no está disponible para cotizar (Estado: ${localInfo.status}).`);
+      return false;
+    }
+
+    // 2. Validar que el Local exista
+    if (!localInfo) {
+      setError('Debes ingresar un código de local válido antes de continuar.');
+      return false;
+    }
+
+    // 3. Validar Email estricto
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.prospecto_email)) {
+      setError('Por favor ingresa un correo electrónico válido (ej: usuario@dominio.com).');
+      return false;
+    }
+
+    // 4. Validar Enteros en duración
+    if (!Number.isInteger(formData.duracion_meses)) {
+      setError('La duración debe ser un número entero de meses.');
+      return false;
+    }
+
+    return true;
+  };
+
   // 2. Manejo del Submit
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm())
+       return;
+
     setSubmitting(true);
     setError(null);
 
@@ -148,6 +181,8 @@ const CreateCotizacion = () => {
               </div>
             </div>
           )}
+
+          {}
 
           {error && (
             <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-lg border border-red-100 text-sm">
