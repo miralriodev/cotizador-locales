@@ -182,7 +182,19 @@ const CreateCotizacion = () => {
             </div>
           )}
 
-          {}
+          {localInfo && localInfo.status !== 'disponible' && (
+           
+           <div className='mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg flex items-center gap-3'>
+            <span className="text-2xl">⚠️</span>
+              <div>
+                <h4 className="font-bold text-yellow-800">Local No Disponible</h4>
+                <p className="text-sm text-yellow-700">
+                  Este local se encuentra actualmente <strong>{localInfo.status.toUpperCase()}</strong>. 
+                  No se pueden generar cotizaciones nuevas.
+                </p>
+              </div>
+           </div>
+          )}
 
           {error && (
             <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-lg border border-red-100 text-sm">
