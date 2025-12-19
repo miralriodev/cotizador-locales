@@ -12,8 +12,8 @@ function App() {
         <main className="container mx-auto px-4 min-h-screen">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/local/:id" element={<LocalDetail />} />
-            <Route path="/cotizar/:id" element={<CreateQuote />} />
+            <Route path="/local/:codigo" element={<LocalDetail />} />
+            <Route path="/cotizar" element={<CreateQuote />} />
           </Routes>
         </main>
         <section className="py-8 px-12 bg-zinc-950 min-h-20 text-zinc-50">
