@@ -1,0 +1,37 @@
+
+node_modules/
+*/node_modules/
+package-lock.json
+
+
+.env
+.env.*
+!.env.example
+
+# --- Archivos de Build y Dist ---
+dist/
+build/
+out/
+.next/
+build/
+coverage/
+
+# --- Logs del Sistema ---
+npm-debug.log*
+
+# --- IDEs y Sistema Operativo ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Plataformas de Despliegue ---
+.vercel/
+.railway/
+
+# --- Testing ---
+coverage/
+cypress/videos/
+cypress/screenshots/
