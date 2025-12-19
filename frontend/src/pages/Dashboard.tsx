@@ -1,25 +1,29 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // Importamos los iconos de Radix
-import { 
-  SewingPinIcon, 
-  SizeIcon, 
-  MagnifyingGlassIcon, 
+import {
   FileTextIcon,
-  PaperPlaneIcon
-} from '@radix-ui/react-icons';
-import { localService } from '../services/api';
-import type { Local } from '../types';
+  MagnifyingGlassIcon,
+  MixerHorizontalIcon,
+  PaperPlaneIcon,
+  SewingPinIcon,
+  SizeIcon
+} from "@radix-ui/react-icons";
+import { localService } from "../services/api";
+import type { Local } from "../types";
 
 export default function Dashboard() {
   const [locales, setLocales] = useState<Local[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   // Estado para filtros según requerimientos [cite: 52]
   const [filters, setFilters] = useState({
-    pabellon: '',
-    min_precio: '',
-    max_precio: ''
+    codigo: "",
+    pabellon: "",
+    min_precio: "",
+    max_precio: "",
+    min_area: "",
+    max_area: "",
   });
 
   const fetchLocales = async () => {
@@ -27,12 +31,12 @@ export default function Dashboard() {
     try {
       // Limpieza de filtros vacíos
       const params = Object.fromEntries(
-        Object.entries(filters).filter(([, v]) => v !== '')
+        Object.entries(filters).filter(([, v]) => v !== "")
       );
       const response = await localService.getAll(params);
       setLocales(response.data);
     } catch (error) {
-      console.error('Error cargando locales:', error);
+      console.error("Error cargando locales:", error);
     } finally {
       setLoading(false);
     }
@@ -42,7 +46,9 @@ export default function Dashboard() {
     fetchLocales();
   }, []);
 
-  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleFilterChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
@@ -56,98 +62,144 @@ export default function Dashboard() {
       </div>
 
       {/* --- BARRA DE FILTROS --- */}
-      <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex flex-wrap gap-4 items-end">
-        <div>
-          <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Pabellón</label>
-          <select 
-            name="pabellon" 
-            className="border border-gray-200 rounded-lg p-2.5 w-36 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-            onChange={handleFilterChange}
-          >
-            <option value="">Todos</option>
-            <option value="A">Pabellón A</option>
-            <option value="B">Pabellón B</option>
-            <option value="C">Pabellón C</option>
-          </select>
-        </div>
-        
-        <div className="flex gap-2">
-          <div>
-            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Precio Min</label>
-            <input 
-              type="number" 
-              name="min_precio" 
-              placeholder="0" 
-              className="border border-gray-200 rounded-lg p-2.5 w-28 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-              onChange={handleFilterChange}
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Precio Max</label>
-            <input 
-              type="number" 
-              name="max_precio" 
-              placeholder="Max" 
-              className="border border-gray-200 rounded-lg p-2.5 w-28 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
-              onChange={handleFilterChange}
-            />
-          </div>
+      <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-4">
+
+        <div className="flex items-center gap-2 text-gray-500 mb-1">
+            <MixerHorizontalIcon /> <span className="text-xs font-bold uppercase tracking-wider">Filtros de Búsqueda</span>
         </div>
 
-        <button 
-          onClick={fetchLocales}
-          className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded-lg flex items-center gap-2 transition-all shadow-md active:scale-95"
-        >
-          <MagnifyingGlassIcon className="w-4 h-4" /> Buscar
-        </button>
+        <div className="flex flex-wrap gap-4 items-end">
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+              Código / ID
+            </label>
+            <div className="relative">
+              <MagnifyingGlassIcon className="absolute left-3 top-3 text-gray-400 w-4 h-4" />
+              <input
+                type="text"
+                name="codigo"
+                placeholder="Ej. A-101"
+                className="border border-gray-200 rounded-lg py-2.5 pl-9 pr-3 w-36 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                onChange={handleFilterChange}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+              Pabellón
+            </label>
+            <select
+              name="pabellon"
+              className="border border-gray-200 rounded-lg p-2.5 w-36 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+              onChange={handleFilterChange}
+            >
+              <option value="">Todos</option>
+              <option value="A">Pabellón A</option>
+              <option value="B">Pabellón B</option>
+              <option value="C">Pabellón C</option>
+            </select>
+          </div>
+
+          <div className="flex gap-2">
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                Precio Min
+              </label>
+              <input
+                type="number"
+                name="min_precio"
+                placeholder="0"
+                className="border border-gray-200 rounded-lg p-2.5 w-28 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                onChange={handleFilterChange}
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                Precio Max
+              </label>
+              <input
+                type="number"
+                name="max_precio"
+                placeholder="Max"
+                className="border border-gray-200 rounded-lg p-2.5 w-28 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                onChange={handleFilterChange}
+              />
+            </div>
+          </div>
+
+          <button
+            onClick={fetchLocales}
+            className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded-lg flex items-center gap-2 transition-all shadow-md active:scale-95"
+          >
+            <MagnifyingGlassIcon className="w-4 h-4" /> Buscar
+          </button>
+        </div>
       </div>
 
       {/* --- GRID DE RESULTADOS --- */}
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mb-2"></div>
-           <p>Cargando inventario...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mb-2"></div>
+          <p>Cargando inventario...</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {locales.map((local) => (
-            <div key={local._id} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 group">
+            <div
+              key={local._id}
+              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 group"
+            >
               {/* Imagen Placeholder (Gris elegante) */}
               <div className="h-36 bg-gray-100 flex items-center justify-center group-hover:bg-gray-200 transition">
                 <span className="text-gray-300 text-5xl select-none">🏢</span>
               </div>
-              
+
               <div className="p-5">
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-lg font-bold text-gray-900 tracking-tight">{local.codigo}</h3>
-                  <span className={`px-2.5 py-1 text-xs font-bold rounded-full border ${
-                    local.status === 'disponible' 
-                      ? 'bg-green-50 text-green-700 border-green-200' 
-                      : 'bg-red-50 text-red-700 border-red-200'
-                  }`}>
-                    {local.status === 'disponible' ? 'DISPONIBLE' : 'OCUPADO'}
+                  <h3 className="text-lg font-bold text-gray-900 tracking-tight">
+                    {local.codigo}
+                  </h3>
+                  <span
+                    className={`px-2.5 py-1 text-xs font-bold rounded-full border ${
+                      local.status === "disponible"
+                        ? "bg-green-50 text-green-700 border-green-200"
+                        : "bg-red-50 text-red-700 border-red-200"
+                    }`}
+                  >
+                    {local.status === "disponible" ? "DISPONIBLE" : "OCUPADO"}
                   </span>
                 </div>
 
                 <div className="space-y-3 text-sm text-gray-600 mb-6">
                   <div className="flex items-center gap-3">
-                    <SewingPinIcon className="w-4 h-4 text-gray-400" /> 
-                    <span>Pabellón <span className="font-semibold text-gray-800">{local.pabellon}</span></span>
+                    <SewingPinIcon className="w-4 h-4 text-gray-400" />
+                    <span>
+                      Pabellón{" "}
+                      <span className="font-semibold text-gray-800">
+                        {local.pabellon}
+                      </span>
+                    </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <SizeIcon className="w-4 h-4 text-gray-400" /> 
+                    <SizeIcon className="w-4 h-4 text-gray-400" />
                     <span>{local.area_m2} m²</span>
                   </div>
                   <div className="flex items-center gap-3">
                     {/* Radix no tiene icono de dolar explícito, usamos texto estilizado */}
-                    <div className="w-4 h-4 flex items-center justify-center font-bold text-gray-400">$</div>
+                    <div className="w-4 h-4 flex items-center justify-center font-bold text-gray-400">
+                      $
+                    </div>
                     <span className="text-lg font-bold text-gray-900">
-                      {local.precio_mensual.toLocaleString('es-MX')} <span className="text-xs font-normal text-gray-500">/mes</span>
+                      {local.precio_mensual.toLocaleString("es-MX")}{" "}
+                      <span className="text-xs font-normal text-gray-500">
+                        /mes
+                      </span>
                     </span>
                   </div>
                 </div>
 
-                <Link 
+                <Link
                   to={`/local/${local.codigo}`}
                   className="w-full flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 py-2.5 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition font-medium text-sm"
                 >
