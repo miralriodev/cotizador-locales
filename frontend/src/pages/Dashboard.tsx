@@ -128,6 +128,30 @@ export default function Dashboard() {
             </div>
           </div>
 
+          <div className="flex gap-2 items-end p-2 bg-gray-50 rounded-lg border border-gray-100">
+            <div>
+              <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Área Min (m²)</label>
+              <input 
+                type="number" 
+                name="min_area" 
+                placeholder="0" 
+                className="border border-gray-200 rounded px-2 py-1.5 w-20 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                onChange={handleFilterChange}
+              />
+            </div>
+            <span className="text-gray-400 mb-2">-</span>
+            <div>
+              <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Área Max (m²)</label>
+              <input 
+                type="number" 
+                name="max_area" 
+                placeholder="Max" 
+                className="border border-gray-200 rounded px-2 py-1.5 w-20 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                onChange={handleFilterChange}
+              />
+            </div>
+          </div>
+
           <button
             onClick={fetchLocales}
             className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded-lg flex items-center gap-2 transition-all shadow-md active:scale-95"
