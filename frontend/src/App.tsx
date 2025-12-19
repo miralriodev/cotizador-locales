@@ -13,7 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/local/:id" element={<LocalDetail />} />
-            <Route path="/cotizar/:codigo" element={<CreateQuote />} />
+            <Route path="/cotizar/:id" element={<CreateQuote />} />
           </Routes>
         </main>
         <section className="py-8 px-12 bg-zinc-950 min-h-20 text-zinc-50">
