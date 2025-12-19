@@ -4,7 +4,7 @@ import { localService } from '../services/api';
 import type { Local } from '../types';
 
 const LocalDetail = () => {
-  const { id } = useParams<{ id: string }>();
+  const { codigo } = useParams<{ codigo: string }>();
   const navigate = useNavigate();
   
   const [local, setLocal] = useState<Local | null>(null);
@@ -13,12 +13,12 @@ const LocalDetail = () => {
 
   useEffect(() => {
     const fetchLocal = async () => {
-      if (!id) return;
+      if (!codigo) return;
       
       try {
         setLoading(true);
 
-        const data = await localService.getByCodigo(id);
+        const data = await localService.getByCodigo(codigo);
         setLocal(data);
       } catch (err) {
         console.error(err);
@@ -29,7 +29,7 @@ const LocalDetail = () => {
     };
 
     fetchLocal();
-  }, [id]);
+  }, [codigo]);
 
   // Helper para formatear moneda
   const formatCurrency = (amount: number) => {
@@ -67,6 +67,7 @@ const LocalDetail = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
+      
       <button 
         onClick={() => navigate(-1)}
         className="mb-6 flex items-center text-gray-600 hover:text-blue-600 transition-colors"
@@ -76,6 +77,7 @@ const LocalDetail = () => {
 
       <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
         
+        {/* Header: Código y Status */}
         <div className="p-6 border-b border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gray-50">
           <div>
             <h1 className="text-3xl font-bold text-gray-800">Local {local.codigo}</h1>
