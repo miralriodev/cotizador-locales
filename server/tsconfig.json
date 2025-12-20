@@ -8,6 +8,8 @@
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "target": "esnext",
     "types": ["node"],
     // For nodejs:
@@ -41,6 +43,8 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
   },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
   "ts-node": {
     "esm": true    
   }
