@@ -15,14 +15,17 @@ Puedes probar la aplicación desplegada en los siguientes enlaces:
 ## 🛠 Tech Stack
 
 ### Frontend (`/frontend`)
-- **Framework:** [React + Vite]
-- **Estilos:** [TailwindCSS]
-- **Estado:** [Context API]
-- **Otras librerías:** [Axios, React Router]
+- React 18 + Vite + TypeScript
+- Tailwind CSS (Estilos)
+- React Router DOM (Navegación)
+- Axios (Peticiones HTTP)
 
 ### Backend (`/server`)
-- **Runtime:** [Node.js / Express]
-- **Base de Datos:** [MongoDB]
+- Node.js + Express
+- TypeScript
+- MongoDB + Mongoose
+- Docker (Containerización)
+- Swagger (Documentación)
 ---
 
 ## 📂 Estructura del Proyecto
@@ -34,3 +37,19 @@ El proyecto está organizado como un monorepo simple:
 ├── frontend/       # Aplicación Frontend (React/Vite) -> Desplegado en Vercel
 ├── server/         # API Backend (Node) -> Desplegado en Railway
 └── README.md       # Documentación de prueba tecnica.
+```
+
+## ⚙️ Instrucciones de Instalación y Ejecución
+
+El proyecto está configurado para iniciarse con comandos simples desde la raíz.
+
+### Prerrequisitos
+- Node.js (v18 o superior)
+- MongoDB (Local o Atlas)
+
+### 1. Clonar el repositorio
+```bash
+git clone [https://github.com/miralriodev/cotizador-locales.git](https://github.com/miralriodev/cotizador-locales.git)
+cd cotizador-locales
+```
+

@@ -12,7 +12,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+
+const allowedOrigin = process.env.CORS_ORIGIN || '*';
+
+app.use(cors({
+  origin: allowedOrigin
+}));
 app.use(express.json());
 
 // Configuración Swagger
