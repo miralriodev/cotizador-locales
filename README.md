@@ -6,8 +6,8 @@ Este repositorio contiene la solución a la prueba técnica. El proyecto se ha e
 
 Puedes probar la aplicación desplegada en los siguientes enlaces:
 
-- **Frontend (Vercel):** [https://tu-proyecto.vercel.app](https://tu-proyecto.vercel.app)
-- **Backend API (Render):** [https://cotizador-locales-api.onrender.com/api/health](https://cotizador-locales-api.onrender.com/api/health)
+- **Frontend (Vercel):** [https://cotizador-locales-three.vercel.app](https://cotizador-locales-three.vercel.app)
+- **Backend API (Render):** [https://cotizador-locales-api.onrender.com/api/](https://cotizador-locales-api.onrender.com/api/)
 - **Documentación API:** [https://cotizador-locales-api.onrender.com/api/docs/](https://cotizador-locales-api.onrender.com/api/docs/)
 
 ---
