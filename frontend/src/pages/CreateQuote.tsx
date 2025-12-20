@@ -157,25 +157,25 @@ const CreateCotizacion = () => {
   // --- VISTA: FORMULARIO ---
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <button onClick={() => navigate(-1)} className="mb-6 text-gray-500 hover:text-gray-800">
+      <button onClick={() => navigate(-1)} className="mb-4 md:mb-6 text-gray-500 hover:text-gray-800">
         ← Cancelar
       </button>
 
       <div className="bg-white shadow-lg rounded-xl overflow-hidden">
-        <div className="bg-blue-600 p-6">
-          <h1 className="text-2xl font-bold text-white">Generar Nueva Cotización</h1>
+        <div className="bg-blue-600 p-4 md:p-6">
+          <h1 className="text-xl md:text-2xl font-bold text-white">Generar Nueva Cotización</h1>
           <p className="text-blue-100 mt-1">Ingresa los datos para calcular el arrendamiento.</p>
         </div>
 
-        <div className="p-8">
+        <div className="p-4 md:p-8">
           {/* Tarjeta de Resumen del Local (Si existe info) */}
           {localInfo && (
-            <div className="mb-8 p-4 bg-blue-50 border border-blue-100 rounded-lg flex items-start gap-4">
+            <div className="mb-6 md:mb-8 p-4 bg-blue-50 border border-blue-100 rounded-lg flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="flex-1">
                 <h3 className="font-semibold text-blue-900">Local {localInfo.codigo}</h3>
                 <p className="text-sm text-blue-700">{localInfo.pabellon}</p>
               </div>
-              <div className="text-right">
+              <div className="text-left sm:text-right w-full sm:w-auto">
                 <p className="font-bold text-blue-900">{formatCurrency(localInfo.precio_mensual)}</p>
                 <p className="text-xs text-blue-600">por mes</p>
               </div>

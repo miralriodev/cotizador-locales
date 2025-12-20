@@ -69,7 +69,7 @@ export default function Dashboard() {
         </div>
 
         <div className="flex flex-wrap gap-4 items-end">
-          <div>
+          <div className="w-full sm:w-auto">
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
               Código / ID
             </label>
@@ -79,19 +79,19 @@ export default function Dashboard() {
                 type="text"
                 name="codigo"
                 placeholder="Ej. A-101"
-                className="border border-gray-200 rounded-lg py-2.5 pl-9 pr-3 w-36 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                className="border border-gray-200 rounded-lg py-2.5 pl-9 pr-3 w-full sm:w-36 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
                 onChange={handleFilterChange}
               />
             </div>
           </div>
 
-          <div>
+          <div className="w-full sm:w-auto">
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
               Pabellón
             </label>
             <select
               name="pabellon"
-              className="border border-gray-200 rounded-lg p-2.5 w-36 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+              className="border border-gray-200 rounded-lg p-2.5 w-full sm:w-36 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
               onChange={handleFilterChange}
             >
               <option value="">Todos</option>
@@ -101,8 +101,8 @@ export default function Dashboard() {
             </select>
           </div>
 
-          <div className="flex gap-2">
-            <div>
+          <div className="flex gap-2 w-full sm:w-auto">
+            <div className="w-1/2 sm:w-auto">
               <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
                 Precio Min
               </label>
@@ -110,11 +110,11 @@ export default function Dashboard() {
                 type="number"
                 name="min_precio"
                 placeholder="0"
-                className="border border-gray-200 rounded-lg p-2.5 w-28 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                className="border border-gray-200 rounded-lg p-2.5 w-full sm:w-28 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
                 onChange={handleFilterChange}
               />
             </div>
-            <div>
+            <div className="w-1/2 sm:w-auto">
               <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
                 Precio Max
               </label>
@@ -122,31 +122,31 @@ export default function Dashboard() {
                 type="number"
                 name="max_precio"
                 placeholder="Max"
-                className="border border-gray-200 rounded-lg p-2.5 w-28 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+                className="border border-gray-200 rounded-lg p-2.5 w-full sm:w-28 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
                 onChange={handleFilterChange}
               />
             </div>
           </div>
 
-          <div className="flex gap-2 items-end p-2 bg-gray-50 rounded-lg border border-gray-100">
-            <div>
+          <div className="flex gap-2 items-end p-2 bg-gray-50 rounded-lg border border-gray-100 w-full sm:w-auto">
+            <div className="w-1/2 sm:w-auto">
               <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Área Min (m²)</label>
               <input 
                 type="number" 
                 name="min_area" 
                 placeholder="0" 
-                className="border border-gray-200 rounded px-2 py-1.5 w-20 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="border border-gray-200 rounded px-2 py-1.5 w-full sm:w-20 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 onChange={handleFilterChange}
               />
             </div>
             <span className="text-gray-400 mb-2">-</span>
-            <div>
+            <div className="w-1/2 sm:w-auto">
               <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Área Max (m²)</label>
               <input 
                 type="number" 
                 name="max_area" 
                 placeholder="Max" 
-                className="border border-gray-200 rounded px-2 py-1.5 w-20 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="border border-gray-200 rounded px-2 py-1.5 w-full sm:w-20 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 onChange={handleFilterChange}
               />
             </div>
@@ -154,7 +154,7 @@ export default function Dashboard() {
 
           <button
             onClick={fetchLocales}
-            className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded-lg flex items-center gap-2 transition-all shadow-md active:scale-95"
+            className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 w-full sm:w-auto"
           >
             <MagnifyingGlassIcon className="w-4 h-4" /> Buscar
           </button>

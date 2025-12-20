@@ -131,16 +131,16 @@ const LocalDetail = () => {
         </div>
 
         {/* Footer: Acciones */}
-        <div className="p-6 bg-gray-50 border-t border-gray-100 flex justify-end gap-3">
+        <div className="p-4 md:p-6 bg-gray-50 border-t border-gray-100 flex justify-end gap-3">
           {local.status === 'disponible' ? (
              <Link 
                to={`/cotizar?local=${local.codigo}`}
-               className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-sm"
+               className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-sm text-center"
              >
                Generar Cotización
              </Link>
           ) : (
-            <button disabled className="bg-gray-300 text-gray-500 font-medium py-2 px-6 rounded-lg cursor-not-allowed">
+            <button disabled className="w-full md:w-auto bg-gray-300 text-gray-500 font-medium py-2 px-6 rounded-lg cursor-not-allowed">
               No disponible para cotizar
             </button>
           )}
