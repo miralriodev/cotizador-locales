@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // Importamos los iconos de Radix
 import {
-  FileTextIcon,
   MagnifyingGlassIcon,
   MixerHorizontalIcon,
   PaperPlaneIcon,
@@ -57,18 +56,18 @@ export default function Dashboard() {
       {/* --- HEADER --- */}
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          <FileTextIcon className="w-6 h-6" /> Locales Disponibles
+            Locales Disponibles
         </h2>
       </div>
 
       {/* --- BARRA DE FILTROS --- */}
-      <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-4">
+      <div className="bg-white p-5 rounded-xl shadow-xs border border-gray-100 flex flex-col gap-4">
 
-        <div className="flex items-center gap-2 text-gray-500 mb-1">
+        <div className="flex items-center gap-2 text-gray-900 mb-1 md:px-20">
             <MixerHorizontalIcon /> <span className="text-xs font-bold uppercase tracking-wider">Filtros de Búsqueda</span>
         </div>
 
-        <div className="flex flex-wrap gap-4 items-end">
+        <div className="flex flex-wrap gap-12 items-end justify-center">
           <div className="w-full sm:w-auto">
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
               Código / ID
@@ -130,7 +129,7 @@ export default function Dashboard() {
 
           <div className="flex gap-2 items-end p-2 bg-gray-50 rounded-lg border border-gray-100 w-full sm:w-auto">
             <div className="w-1/2 sm:w-auto">
-              <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Área Min (m²)</label>
+              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Área Min (m²)</label>
               <input 
                 type="number" 
                 name="min_area" 
@@ -141,7 +140,7 @@ export default function Dashboard() {
             </div>
             <span className="text-gray-400 mb-2">-</span>
             <div className="w-1/2 sm:w-auto">
-              <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Área Max (m²)</label>
+              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Área Max (m²)</label>
               <input 
                 type="number" 
                 name="max_area" 
@@ -154,7 +153,7 @@ export default function Dashboard() {
 
           <button
             onClick={fetchLocales}
-            className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 w-full sm:w-auto"
+            className="bg-gray-900 hover:bg-black text-white px-5 py-5 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 w-full sm:w-auto"
           >
             <MagnifyingGlassIcon className="w-4 h-4" /> Buscar
           </button>
@@ -172,7 +171,7 @@ export default function Dashboard() {
           {locales.map((local) => (
             <div
               key={local._id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 group"
+              className="bg-white rounded-xl shadow-xs hover:shadow-sm transition-all duration-300 overflow-hidden border border-gray-100 group"
             >
               {/* Imagen Placeholder (Gris elegante) */}
               <div className="h-36 bg-gray-100 flex items-center justify-center group-hover:bg-gray-200 transition">
