@@ -63,7 +63,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://linkedin.com/in/tu-usuario"
+                href="https://www.linkedin.com/in/miralriodev/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-900 p-2 rounded-full hover:bg-blue-800 text-white transition-colors"
