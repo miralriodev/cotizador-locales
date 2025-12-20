@@ -7,7 +7,8 @@ Este repositorio contiene la solución a la prueba técnica, el proyecto se ha e
 Puedes probar la aplicación desplegada en los siguientes enlaces:
 
 - **Frontend (Vercel):** [https://tu-proyecto.vercel.app](https://tu-proyecto.vercel.app)
-- **Backend API (Railway):** [https://tu-proyecto.up.railway.app/health](https://tu-proyecto.up.railway.app) _(O el endpoint base)_
+- **Backend API (Railway):** [https://cotizador-locales-api.onrender.com/api/heath](https://cotizador-locales-api.onrender.com/api)
+- **Documentación API:** [https://cotizador-locales-api.onrender.com/api/docs](https://cotizador-locales-api.onrender.com/api/docs/)
 
 ---
 
