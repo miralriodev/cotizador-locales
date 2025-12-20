@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import CreateQuote from "@/pages/CreateQuote";
 import Dashboard from "@/pages/Dashboard";
@@ -16,9 +17,7 @@ function App() {
             <Route path="/cotizar" element={<CreateQuote />} />
           </Routes>
         </main>
-        <section className="py-8 px-6 md:px-12 bg-zinc-950 min-h-20 text-zinc-50">
-          <p className="text-center md:text-left">Cotizador de Locales para Constructora del Bajio Esscala.</p>
-        </section>
+        <Footer />
       </div>
       </BrowserRouter>
   )
